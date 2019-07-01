@@ -11,7 +11,7 @@ var queryUrl;
 //BANDS IN TOWN
 if (QueryType === "concert-this"){
     if (process.argv[3] == undefined){
-        QueryData= "Mr. Nobody"
+        QueryData= "Metallica"
     }
     var queryUrl = "https://rest.bandsintown.com/artists/" + QueryData + "/events?app_id=codingbootcamp";
     console.log(queryUrl);
@@ -49,16 +49,12 @@ if (QueryType === "spotify-this-song"){
  
     var keys = require("./keys.js");
     var spotify = new Spotify(keys.spotify);
-};
+
  
 spotify.search({ type: 'track', query: QueryData }, function(err, data) {
   if (err) {
     return console.log('Error occurred: ' + err);
   }
- 
-//   console.log(data)
-//   console.log(data.tracks)
-//   console.log(data.tracks.items)
   
 //ARTIST NAME
 console.log("Artist Name: "+data.tracks.items[0].album.artists[0].name)
@@ -79,7 +75,7 @@ console.log("Album Title: "+data.tracks.items[0].album.name)
 console.log("This is the NODE SPOTIFY REPLY: "+data); 
 });
 
-
+};
 //OMDB --------------- WORKING!!!
 if (QueryType === "movie-this"){ 
     if (process.argv[3] == undefined){
